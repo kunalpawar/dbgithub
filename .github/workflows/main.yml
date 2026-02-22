@@ -27,5 +27,5 @@ jobs:
       - name: Deploy Databricks Asset Bundle
         run: |
           # If using dbx (Databricks DevX) CLI
-          pip install dbx
-          dbx deploy --environment=DEFAULT --jobs
+          pip install --upgrade dbx
+          dbx deploy --jobs --verbose
