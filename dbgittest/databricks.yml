@@ -1,0 +1,37 @@
+# Databricks Asset Bundle configuration, more info here: https://docs.databricks.com/en/dev-tools/bundles/settings.html
+bundle:
+  name: "dbgittest"
+
+resources:
+  jobs:
+    get_employeegit:
+      name: get_employeegit
+      tasks:
+        - task_key: getempgit
+          notebook_task:
+            notebook_path: /Workspace/Users/kunalpawar828@gmail.com/emp/empdata
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
+
+
+targets:
+  # The 'dev' target, for development purposes. This target is the default.
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-707ad082-e7d7.cloud.databricks.com
+
+  # The 'prod' target, used for production deployment.
+  prod:
+    mode: production
+    workspace:
+      host: https://dbc-707ad082-e7d7.cloud.databricks.com
+      # We always use /Users/kunalpawar828@gmail.com for all resources to make sure we only have a single copy.
+      root_path: /Users/kunalpawar828@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    run_as:
+      # This runs as kunalpawar828@gmail.com in production. We could also use a service principal here,
+      # see https://docs.databricks.com/dev-tools/bundles/permissions.html.
+      user_name: kunalpawar828@gmail.com
