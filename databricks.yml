@@ -5,9 +5,9 @@ bundle:
 resources:
   jobs:
     get_employeegit:
-      name: get_employeegit
+      name: get_employeegit123
       tasks:
-        - task_key: getempgit
+        - task_key: getempgit123
           notebook_task:
             notebook_path: /Workspace/Users/kunalpawar828@gmail.com/emp/empdata
             source: WORKSPACE
@@ -20,7 +20,6 @@ targets:
   # The 'dev' target, for development purposes. This target is the default.
   dev:
     mode: development
-    default: true
     workspace:
       host: https://dbc-707ad082-e7d7.cloud.databricks.com
 
